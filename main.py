@@ -1,20 +1,15 @@
 from fastapi import FastAPI
-import certifi
-import os
-from dotenv import load_dotenv
+from routes import crud
+from db.database import collection
+from contextlib import asynccontextmanager
 
-from pymongo import MongoClient
-from pymongo.server_api import ServerApi
-from .routes import crud
 
 app = FastAPI()
 
-load_dotenv()
-
-mongodb_url = os.getenv("MONGODB_URL")
-
-client = MongoClient(mongodb_url, server_api=ServerApi('1'), tlsCAFile=certifi.where())
-
+@asynccontextmanager
+async def startup_db():
+    print("Connecting to the database...")
+    assert collection is not None, "Failed to connect to the database"
 
 app.include_router(crud.router)
 
