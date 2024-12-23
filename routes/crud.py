@@ -23,6 +23,7 @@ async def create_message(message: schemas.Message):
     message_dict['publish_timestamp'] = datetime.now().timestamp()
     result = await collection.insert_one(message_dict)
     message_dict['id'] = str(result.inserted_id)
+    await send_to_rabbitmq(message_dict)
     return message_dict
 
 @router.get('/messages/{id}', response_model=schemas.MessageInDB)
