@@ -1,4 +1,3 @@
-```markdown
 # Messages API
 
 This project implements an asynchronous RESTful API for handling messages. It provides functionality for creating, reading, updating, and deleting messages, while integrating MongoDB for data storage and RabbitMQ for message queuing.
