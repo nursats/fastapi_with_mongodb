@@ -18,6 +18,6 @@ app.include_router(crud.router)
 def root():
     return {
         "message": "welcome to my project",
-        "description": "This is a demo REST API project",
+        "description": "This is a demo project",
         "contact": "nursat.seitov12@gmail.com"
         }
