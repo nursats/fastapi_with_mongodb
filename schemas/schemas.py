@@ -11,3 +11,6 @@ class MessageInDB(Message):
     id: str = Field(default_factory=str)
     publish_timestamp: float
     edit_timestamp: Optional[float] = None
+
+class MessageSend(BaseModel):
+    id: str = Field(default_factory=str)
